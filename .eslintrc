@@ -15,6 +15,7 @@
     "space-before-function-paren": ["error", { "anonymous": "always", "named": "never" }],
     "semi": ["error", "always"],
     "eol-last": ["error", "always"],
-    "no-return-await": [0]
+    "no-return-await": [0],
+    "no-eval": [0]
   }
 }
