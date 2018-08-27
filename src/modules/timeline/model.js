@@ -1,8 +1,8 @@
 /**
- * INS post
+ * user post
  */
 module.exports = function (Schema) {
-  const INSPostSchema = new Schema({
+  const UserPostSchema = new Schema({
     urlImage: {
       type: [String],
       comment: '图片链接',
@@ -12,24 +12,24 @@ module.exports = function (Schema) {
       type: [String],
       comment: '图片原始链接'
     },
-    isVideo: {
-      type: Boolean,
-      comment: '密码'
+    type: {
+      type: String,
+      comment: '类型'
     },
     video: {
-      type: String,
+      type: [String],
       comment: '视频链接',
       remark: '转存到七牛的链接'
     },
     videoSrc: {
-      type: String,
+      type: [String],
       comment: '视频链接',
-      remark: '转存到七牛的链接'
+      remark: '视频原始链接'
     },
-    city: {
-      type: Schema.Types.ObjectId,
-      ref: 'District',
-      comment: '注册城市'
+    uri: {
+      type: String,
+      comment: '访问地址',
+      remark: '唯一值'
     },
     name: {
       type: String,
@@ -63,5 +63,5 @@ module.exports = function (Schema) {
       comment: '科室'
     }
   });
-  return ['INSPost', INSPostSchema];
+  return ['UserPost', UserPostSchema];
 };
