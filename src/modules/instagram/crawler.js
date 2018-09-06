@@ -67,6 +67,7 @@ const handlePost = async detail => {
     display_url, // 图片，或是视频的封面
     video_url, // 视频地址
     is_video,
+    taken_at_timestamp: timestamp,
     shortcode,
     owner: { username },
     __typename: type // 类型 e.g. GraphSidecar GraphVideo GraphImage
@@ -75,6 +76,7 @@ const handlePost = async detail => {
     text: getField(texts[0], 'node.text'),
     type,
     uri: shortcode,
+    date: new Date(timestamp * 1000),
     media: [],
     social: SOCIAL
   };

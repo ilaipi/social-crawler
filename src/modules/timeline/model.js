@@ -19,6 +19,10 @@ module.exports = function (Schema) {
         thumb: '封面图的原始链接' // 如果是视频，则有值。存的是media.id
       }
     },
+    date: {
+      type: Date,
+      comment: '发布时间'
+    },
     uri: {
       type: String,
       comment: '访问地址',
