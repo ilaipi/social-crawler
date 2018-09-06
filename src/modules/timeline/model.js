@@ -2,66 +2,38 @@
  * user post
  */
 module.exports = function (Schema) {
-  const UserPostSchema = new Schema({
-    urlImage: {
-      type: [String],
-      comment: '图片链接',
-      remark: '转存到七牛的链接'
-    },
-    urlImageSrc: {
-      type: [String],
-      comment: '图片原始链接'
+  const ProviderPostSchema = new Schema({
+    social: {
+      type: String
     },
     type: {
       type: String,
       comment: '类型'
     },
-    video: {
-      type: [String],
-      comment: '视频链接',
-      remark: '转存到七牛的链接'
-    },
-    videoSrc: {
-      type: [String],
-      comment: '视频链接',
-      remark: '视频原始链接'
+    media: {
+      type: [Schema.Types.Mixed],
+      comment: '照片/视频',
+      definition: {
+        type: 'video/img',
+        url: '七牛链接', // 这里不再保存原始链接。在media中保存原始链接。存的是media.id
+        thumb: '封面图的原始链接' // 如果是视频，则有值。存的是media.id
+      }
     },
     uri: {
       type: String,
       comment: '访问地址',
       remark: '唯一值'
     },
-    name: {
+    text: {
       type: String,
-      comment: '微信昵称'
+      comment: '原文',
+      remark: '可能为空，比如转推的时候没有写内容'
     },
-    avatar: {
-      type: String,
-      comment: '头像'
-    },
-    sex: {
-      type: Number,
-      comment: '性别',
-      enum: [
-        1, // 男
-        2, // 女
-        9 // 未知
-      ]
-    },
-    title: {
-      type: String,
-      comment: '职称'
-    },
-    hospital: {
+    provider: {
       type: Schema.Types.ObjectId,
-      ref: 'Hospital',
-      comment: '医院'
-    },
-    department: {
-      type: Schema.Types.ObjectId,
-      ref: 'Department',
-      comment: '科室'
+      ref: 'Provider',
+      comment: '发布者'
     }
   });
-  return ['UserPost', UserPostSchema];
+  return ['ProviderPost', ProviderPostSchema];
 };
