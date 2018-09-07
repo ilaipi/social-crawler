@@ -24,3 +24,12 @@ pm2 start process.json
 # OR
 npm run start
 ```
+
+## 第三方
+下载的图片和视频存储到七牛云  
+
+使用了`config`和`dotenv`库来管理配置  
+```
+@see .env.example
+@see config/
+```
